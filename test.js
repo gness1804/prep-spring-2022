@@ -3,6 +3,8 @@ var expect = require('chai').expect;
 const { findFirstIndexOfElement } = require('./src/firstIndex');
 const { findMedianSortedArrays } = require('./src/findMedianSortedArrays');
 const { isPalindrome } = require('./src/isPalindrome');
+const { isValidParens } = require('./src/isValidParens');
+const { it } = require('mocha');
 
 describe('findFirstIndexOfElement', () => {
   it('should return the correct index for the element', () => {
@@ -55,5 +57,52 @@ describe('isPalindrome', () => {
     const str = '';
     const res = isPalindrome(str);
     expect(res).to.equal(true);
+  });
+});
+
+describe('isValidParens', () => {
+  it('should reject if string has invalid characters', () => {
+    const str = '()a';
+    expect(isValidParens(str)).to.equal(false);
+  });
+
+  it('should validate whether the brackets are correct in a string (simple pair)', () => {
+    const str = '()';
+    expect(isValidParens(str)).to.equal(true);
+  });
+
+  it('should validate whether the brackets are correct in a string (multiple pairs)', () => {
+    const str = '()[]{}';
+    expect(isValidParens(str)).to.equal(true);
+  });
+
+  it('should validate whether the brackets are correct in a string (mismatched chars)', () => {
+    const str = '(]';
+    expect(isValidParens(str)).to.equal(false);
+  });
+
+  it('should validate whether the brackets are correct in a string (complex mismatched chars)', () => {
+    const str = '([)]';
+    expect(isValidParens(str)).to.equal(false);
+  });
+
+  it('should validate whether the brackets are correct in a string (complex matched chars)', () => {
+    const str = '([])';
+    expect(isValidParens(str)).to.equal(true);
+  });
+
+  it('should validate whether the brackets are correct in a string (orphaned second char)', () => {
+    const str = ']';
+    expect(isValidParens(str)).to.equal(false);
+  });
+
+  it('should validate whether the brackets are correct in a string (complex orphaned char case)', () => {
+    const str = '[][][][]]';
+    expect(isValidParens(str)).to.equal(false);
+  });
+
+  it('nasty edge case', () => {
+    const str = '(])';
+    expect(isValidParens(str)).to.equal(false);
   });
 });
