@@ -2,6 +2,7 @@ const { describe } = require('mocha');
 var expect = require('chai').expect;
 const { findFirstIndexOfElement } = require('./src/firstIndex');
 const { findMedianSortedArrays } = require('./src/findMedianSortedArrays');
+const { isPalindrome } = require('./src/isPalindrome');
 
 describe('findFirstIndexOfElement', () => {
   it('should return the correct index for the element', () => {
@@ -34,5 +35,25 @@ describe('findMedianSortedArrays', () => {
   it('should return the median of sorted arrays - even, big numbers', () => {
     const res = findMedianSortedArrays([344, 899, 1001], [1222, 1224, 3000]);
     expect(res).to.equal(1111.5);
+  });
+});
+
+describe('isPalindrome', () => {
+  it('should validate whether a string is a palindrome', () => {
+    const str = 'A man, a plan, a canal: Panama';
+    const res = isPalindrome(str);
+    expect(res).to.equal(true);
+  });
+
+  it('should validate whether a string is a palindrome', () => {
+    const str = 'race a car';
+    const res = isPalindrome(str);
+    expect(res).to.equal(false);
+  });
+
+  it('should validate whether a string is a palindrome', () => {
+    const str = '';
+    const res = isPalindrome(str);
+    expect(res).to.equal(true);
   });
 });
