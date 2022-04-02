@@ -1,7 +1,7 @@
 const { describe } = require('mocha');
 var expect = require('chai').expect;
-const { findFirstIndexOfElement } = require('./firstIndex');
-const { findMedianSortedArrays } = require('./findMedianSortedArrays');
+const { findFirstIndexOfElement } = require('./src/firstIndex');
+const { findMedianSortedArrays } = require('./src/findMedianSortedArrays');
 
 describe('findFirstIndexOfElement', () => {
   it('should return the correct index for the element', () => {
