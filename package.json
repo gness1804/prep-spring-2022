@@ -4,7 +4,9 @@
   "description": "",
   "main": "firstIndex.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "compile": "tsc src/*.ts",
+    "watch": "tsc -w src/*.ts"
   },
   "keywords": [],
   "author": "",
